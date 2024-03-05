@@ -53,7 +53,41 @@ int main() {
     //introduce error
     srand(time(0));
     int pos = rand()%(inp.length());
-    inp.replace(pos,c         k m..........1,to_string(rand()%2));
+    inp.replace(pos,1,to_string(rand()%2));
+    reverse(inp.begin(),inp.end());
     cout<<inp<<endl;
-
+    for(int i = 0; i < r; i++) {
+        int rb = 0;
+        int par = pow(2,i);
+        for(int j = par;j<=inp.length();j++) {
+            cout<<"length : "<<inp.length()<<endl;
+            cout<<"j : "<<j;
+            cout<<(j&par)<<" ";
+            if(((j&par) == par) && inp[j-1] == '1') {
+                cout<<"pos : "<<inp[j-1];
+                rb++;
+            }
+        }
+        cout<<endl;
+        if(rb%2 == 0){
+            cout<<" i : "<<i<<" insert 0\n";
+            out.insert(0,"0");
+        }
+        else {
+            cout<<" i : "<<i<<" insert 1\n";
+            out.insert(0,"1");
+        }
+    }
+    int res = stoi(out,0,2);
+    cout<<res<<endl;
+    int i;
+    for(i=0;i<r;i++) {
+        int x = pow(2,i);
+        if(res%x == 0) {
+            cout<<"No Error\n";
+            break;
+        }
+    }
+    if(i == r)
+    cout<<"Error at position: "<<stoi(out,0,2)<<endl;
 }
